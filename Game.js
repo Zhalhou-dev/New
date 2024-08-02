@@ -1,27 +1,28 @@
-AFRAME.registerComponent("game-play", {
+
+AFRAME.registerComponent("game-play",{
     schema: {
-      elementId: { type: "string", default: "#coin1" },      
-    },
-    
-    update: function() {
-      this.isCollided(this.data.elementId);
-    },
-  
-    isCollided: function(elementId) {
-      const element = document.querySelector(elementId);
-     // element.addEventListener("collide", e => {
-     // element.addEventListener("collide", e => {
-     // element.addEventListener("collide", e => {
-     // element.addEventListener("collide", e => {
-        if (elementId.includes("#coin")) {          
-          console.log("coin collision");
-          
+        elementId:{
+            type: "string",
+            default: "#ring1",
+
+        },
+        update: function(){
+        this.isCollided(this.data.elementId)
+            
+        },
+        isCollided: function(elementId){
+            const element=document.querySelector(elementId)
+            element.addEventListener("collide",e=>{
+                if(elementId.includes("#ring")){
+                    console.log(elementId+"collision")
+              }
+              else if(elementId.includes("#hurdle")){
+                console.log("bird collision")
+
+              }
+            })
         }
-        else if(elementId.includes("#fish")){
-          console.log("fish collision");
-        }         
-      });
+        
+        
     }
-    
-  });
-  
+})
